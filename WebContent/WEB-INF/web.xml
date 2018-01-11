@@ -11,27 +11,22 @@
   </welcome-file-list>
   
   <servlet>
-    <servlet-name>com.mycompany.service.user</servlet-name>
-    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> 
+     <servlet-name>Jersey</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
      <!--<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>-->
-    <!-- <init-param>
-         <param-name>jersey.config.server.provider.packages</param-name>
-        <param-value>com.mycompany.service.user</param-value>
-    </init-param> -->
-    <!-- <init-param>
-        <param-name>javax.ws.rs.core.Application</param-name>
-        <param-value>com.mycompany.service.user.MyApplication</param-value>
-    </init-param> -->
-    
-     <init-param>
-         <param-name>jersey.config.server.provider.packages</param-name>
+    <!-- Must add the following param -->
+    <!-- This init-param is for Registering resources and providers under my.package. -->
+    <init-param>
+        <param-name>jersey.config.server.provider.packages</param-name>
+        <!-- The following is the package name where your class is existed -->
         <param-value>com.mycompany.service.user</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
+   <!-- End of Must add the following block -->
     </servlet>
-    
+     
     <servlet-mapping>
-    	<servlet-name>com.mycompany.service.user.MyApplication</servlet-name>
-    	<url-pattern>/rest/*</url-pattern>
+        <servlet-name>Jersey</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 </web-app>
